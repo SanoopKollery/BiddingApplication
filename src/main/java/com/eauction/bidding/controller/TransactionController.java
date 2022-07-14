@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/e-auction/api/v1/buyer")
-@CrossOrigin(origins = "https://fsesqaud.azurewebsites.net/")
+//@CrossOrigin(origins = "https://fsesqaud.azurewebsites.net")
 public class TransactionController {
 
     @Autowired
@@ -24,6 +24,7 @@ public class TransactionController {
 
     @PostMapping("/place-bid")
     @ResponseStatus(HttpStatus.ACCEPTED)
+
     public ResponseEntity<?> create(@RequestBody @Valid Transaction req) throws TransactionExistsException, ProductNotFound, URISyntaxException {
         System.out.println(req);
         Transaction transaction = transactionService.create(req);

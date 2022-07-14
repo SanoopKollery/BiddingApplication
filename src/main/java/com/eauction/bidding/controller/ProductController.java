@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/e-auction/api/v1/seller")
-@CrossOrigin(origins = "https://fsesqaud.azurewebsites.net/")
+//@CrossOrigin(origins = "https://fsesqaud.azurewebsites.net")
 public class ProductController {
 
     @Autowired
