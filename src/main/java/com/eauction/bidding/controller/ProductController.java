@@ -67,7 +67,7 @@ public class ProductController {
 
     @GetMapping("show-bids/{productID}")
     @ResponseStatus(HttpStatus.OK)
-    public TransactionResponse findTransaction(@PathVariable String productID) throws TransactionNotFoundException {
+    public List<TransactionResponse> findTransaction(@PathVariable String productID) throws TransactionNotFoundException {
         return productService.getBidDetails(productID);
     }
 

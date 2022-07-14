@@ -9,10 +9,7 @@ import com.eauction.bidding.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -60,7 +57,7 @@ public class ProductService {
         return products.stream().filter(p->p.getProductName() != null).collect(Collectors.toList());
     }
 
-    public TransactionResponse getBidDetails(String productID) {
+    public List<TransactionResponse> getBidDetails(String productID) {
         TransactionResponse transactionResponse = new TransactionResponse();
         Optional<Product> product = productRepository.findByProductIdAndCategoryIsNotNull(productID);
         if (product.isPresent()) {
@@ -79,6 +76,6 @@ public class ProductService {
             }
 
         }
-        return transactionResponse;
+        return Arrays.asList(transactionResponse);
     }
 }
