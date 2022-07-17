@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'fsesquadeauction'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_012DA4A510DA4ED2904EA41AB4C08C4B }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_28BAEC114E4A4719AC9CD4AE9C5C1491 }}
           package: '*.jar'
