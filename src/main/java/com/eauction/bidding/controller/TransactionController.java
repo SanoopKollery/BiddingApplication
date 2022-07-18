@@ -42,8 +42,14 @@ public class TransactionController {
 
     @GetMapping("show-bids/{productID}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Transaction> findTransaction(@PathVariable String productID) throws TransactionNotFoundException {
+    public List<Transaction> findTransactions(@PathVariable String productID) throws TransactionNotFoundException {
         return transactionService.findByProductID(productID);
+    }
+
+    @GetMapping("/tutorials/{transactionId}")
+    public List<Transaction> getTransaction(@PathVariable String transactionId)
+    {
+        return  transactionService.getTransaction(transactionId);
     }
 
 

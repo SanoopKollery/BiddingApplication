@@ -9,7 +9,9 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.Query;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -48,5 +50,13 @@ public class TransactionService {
     public List<Transaction> findByProductID(String productID) {
         List<Transaction> transactions = transactionRepository.findByProductIdAndFirstNameIsNotNull(productID);
         return transactions;
+    }
+
+    public List<Transaction> getTransaction(String transactionId) {
+        Optional<Transaction> transaction = transactionRepository.findByTransactionId(transactionId);
+        if (transaction.isPresent())
+         return Arrays.asList(transaction.get());
+        else
+          return   Arrays.asList(new Transaction());
     }
 }
