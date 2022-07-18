@@ -52,11 +52,11 @@ public class TransactionService {
         return transactions;
     }
 
-    public List<Transaction> getTransaction(String transactionId) {
+    public Transaction getTransaction(String transactionId) {
         Optional<Transaction> transaction = transactionRepository.findByTransactionId(transactionId);
         if (transaction.isPresent())
-         return Arrays.asList(transaction.get());
+         return transaction.get();
         else
-          return   Arrays.asList(new Transaction());
+          return new Transaction();
     }
 }

@@ -47,7 +47,7 @@ public class TransactionController {
     }
 
     @GetMapping("/tutorials/{transactionId}")
-    public List<Transaction> getTransaction(@PathVariable String transactionId)
+    public Transaction getTransaction(@PathVariable String transactionId)
     {
         return  transactionService.getTransaction(transactionId);
     }
