@@ -41,7 +41,7 @@ public class ProductService {
     }
 
     public Product findByProductID(String productID) {
-        Optional<Product> product =  productRepository.findById(productID);
+        Optional<Product> product =  productRepository.findByProductIdAndCategoryIsNotNull(productID);
         if (product.isPresent())
             return product.get();
         return new Product();

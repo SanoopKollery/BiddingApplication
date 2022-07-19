@@ -38,9 +38,9 @@ public class ProductController {
 
     @GetMapping("/get-product/{productID}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> findProduct(@PathVariable String productID) throws TransactionExistsException {
+    public Product findProduct(@PathVariable String productID) throws TransactionExistsException {
         Product product = productService.findByProductID(productID);
-        return new ResponseEntity<>(product,HttpStatus.OK);
+        return product;
     }
 
     @GetMapping("/get-product/name/{productName}")
