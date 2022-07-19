@@ -52,5 +52,11 @@ public class TransactionController {
         return  transactionService.getTransaction(transactionId);
     }
 
+    @GetMapping("/show-bid/{productID}")
+    public ResponseEntity<?> getBidDetails(@PathVariable String productID)
+    {
+        return  transactionService.getBidDetails(productID);
+    }
+
 
 }

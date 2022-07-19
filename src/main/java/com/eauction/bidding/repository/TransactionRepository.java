@@ -14,4 +14,5 @@ public interface TransactionRepository extends MongoRepository<Transaction,Strin
     Optional<Transaction> findByTransactionId(String transactionID);
     List<Transaction> findByProductIdAndFirstNameIsNotNull(String productID);
     void deleteByProductIdAndEmail(String productID, String emailID);
+
 }

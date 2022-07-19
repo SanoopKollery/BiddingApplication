@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.Query;
@@ -58,5 +60,13 @@ public class TransactionService {
          return transaction.get();
         else
           return new Transaction();
+    }
+
+    public ResponseEntity<?> getBidDetails(String productID) {
+        List<Transaction> transactions = transactionRepository.findByProductIdAndFirstNameIsNotNull(productID);
+        if (transactions.isEmpty())
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        else
+            return new ResponseEntity<>(null,HttpStatus.OK);
     }
 }
