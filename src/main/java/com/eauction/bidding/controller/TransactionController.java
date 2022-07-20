@@ -1,5 +1,6 @@
 package com.eauction.bidding.controller;
 
+import com.eauction.bidding.entity.Response;
 import com.eauction.bidding.entity.Transaction;
 import com.eauction.bidding.exception.ProductNotFound;
 import com.eauction.bidding.exception.TransactionExistsException;
@@ -26,7 +27,15 @@ public class TransactionController {
     @ResponseStatus(HttpStatus.ACCEPTED)
 
     public ResponseEntity<?> create(@RequestBody @Valid Transaction req) throws TransactionExistsException, ProductNotFound, URISyntaxException {
-        System.out.println(req);
+        if (req.getFirstName().length()<5 ||
+            req.getFirstName().length()>30)
+            return new ResponseEntity<>(new Response("First name length should be between 5 and 30 !"), HttpStatus.BAD_REQUEST);
+        if (req.getLastName().length()<3 ||
+                req.getLastName().length()>25)
+            return new ResponseEntity<>(new Response("Last name length should be between 3 and 25 !"), HttpStatus.BAD_REQUEST);
+        if (req.getPhone().length() != 10 )
+            return new ResponseEntity<>(new Response("Phone length should be 10 !"), HttpStatus.BAD_REQUEST);
+
         Transaction transaction = transactionService.create(req);
         return new ResponseEntity<>(transaction,HttpStatus.OK);
     }
