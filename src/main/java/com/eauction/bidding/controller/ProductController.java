@@ -25,6 +25,11 @@ public class ProductController {
     @PostMapping("/add-product")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> createProduct(@RequestBody @Valid Product product) throws TransactionExistsException, FutureDateException, ProductCategoryException {
+        if (product.getProductName().length()<5 ||
+                product.getProductName().length() >30
+        ) {
+            return new ResponseEntity<>(new Response("Product name length should be between 5 and 30 !"), HttpStatus.BAD_REQUEST);
+        }
         Product newProduct = productService.create(product);
         return new ResponseEntity<>(newProduct,HttpStatus.OK);
     }
